@@ -22,7 +22,7 @@
     --bg: #0a0a0b;
     --bg-raised: #141415;
     --paper: #efece2;
-    --ink: #e9e4d6;
+    --ink: #ffffff;
     --ink-dim: #8c877a;
     --line: #2b2a27;
     --acid: #b6ff3c;
@@ -69,7 +69,7 @@
   #wordmark-img{
     display: block;
     height: 104px;
-    margin-top: -4px;
+    margin-top: 9px;
     width: auto;
     max-width: 94vw;
     object-fit: contain;
@@ -157,7 +157,7 @@
   .p-blurb{
     font-size: 10.5px;
     line-height: 1.3;
-    color: rgba(233,228,214,0.9);
+    color: rgba(255,255,255,0.9);
   }
   .p-size{
     position: absolute;
@@ -165,7 +165,7 @@
     right: 7px;
     font-family: var(--f-ui);
     font-size: 9px;
-    color: rgba(233,228,214,0.55);
+    color: rgba(255,255,255,0.55);
   }
 
   /* End-of-gallery cap (the gallery is finite) */
@@ -371,12 +371,12 @@
     border:none;
     cursor:pointer;
     z-index: 2;
-    color: rgba(233,228,214,0.45);
+    color: rgba(255,255,255,0.45);
     font-family: var(--f-ui);
     font-size: 22px;
     transition: color 0.15s ease, background 0.15s ease;
   }
-  .viewer-nav:hover{ color: rgba(233,228,214,0.85); background: rgba(255,255,255,0.06); }
+  .viewer-nav:hover{ color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.06); }
   .viewer-prev{ left:0; justify-content:flex-start; padding-left: 8px; }
   .viewer-next{ right:0; justify-content:flex-end; padding-right: 8px; }
 
@@ -386,7 +386,7 @@
     bottom: 8px;
     font-family: var(--f-ui);
     font-size: 10px;
-    color: rgba(233,228,214,0.75);
+    color: rgba(255,255,255,0.75);
     background: rgba(0,0,0,0.55);
     padding: 2px 7px;
     z-index: 2;
@@ -404,7 +404,7 @@
   .viewer-dots span{
     width: 5px; height: 5px;
     border-radius: 50%;
-    background: rgba(233,228,214,0.3);
+    background: rgba(255,255,255,0.3);
   }
   .viewer-dots span.active{ background: var(--acid); }
 
@@ -578,7 +578,7 @@
   .poster-info .p-blurb{
     font-size: 11px;
     line-height: 1.35;
-    color: rgba(233,228,214,0.9);
+    color: rgba(255,255,255,0.9);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
@@ -948,6 +948,14 @@
     margin-bottom: 14px;
   }
   .about-intro + .about-intro{ color: var(--ink-dim); }
+  .about-intro.bio{ color: var(--ink); max-width: 64ch; }
+  .about-intro.bio.lead{ font-family: var(--f-head); font-size: 20px; line-height: 1.3; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 6px; }
+  .about-intro.bio.lead2{ font-size: 15px; font-family: inherit; text-transform: none; letter-spacing: 0; color: var(--ink-dim); margin-bottom: 20px; }
+  .about-intro.bio.tight{ margin-bottom: 4px; color: var(--ink-dim); }
+  .about-intro.bio.tight2{ color: var(--ink-dim); }
+  .about-intro.bio.sign{ margin-top: 20px; margin-bottom: 0; font-size: 14px; }
+  .about-links{ display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 22px; }
+  @media (max-width: 520px){ .about-links{ grid-template-columns: 1fr; } }
   .about-links-label{
     font-family: var(--f-ui);
     font-size: 11px;
@@ -1992,7 +2000,13 @@ window.__init_music = function(){
     </div>
     <div class="about-text">
       <h2 class="about-heading">About</h2>
-      <p class="about-intro">ko zayde ahau</p>
+      <p class="about-intro bio lead lead1">Kia ora!</p>
+      <p class="about-intro bio lead lead2">Ko Zayde ahau, also known as Suede or Sueded.</p>
+      <p class="about-intro bio">First of all, thanks heaps for stopping by. Your attention means more and more to me every day, as content seems more and more like a commodity, rather than an expression to take interest in. If you're reading this, you're the realest!</p>
+      <p class="about-intro bio">I started my arts in 2016 making playlist covers for me and my friends on a cracked Photoshop (and it's still fuck adobe everyday). From then I've tried my share of mediums and methods of making, whether it's photography, video editing, music production, or drawing, I love it all.</p>
+      <p class="about-intro bio tight">Please see additional artform details on each page.</p>
+      <p class="about-intro bio tight2">Enjoy your stay. Thanks again for stopping by.</p>
+      <p class="about-intro bio sign">Ngā mihi maioha,<br>Zayde (Suede)</p>
       <div class="about-links-label">Find me elsewhere</div>
       <div class="about-links">
       <a class="about-link" href="https://www.instagram.com/suedexlee/" target="_blank" rel="noopener">
