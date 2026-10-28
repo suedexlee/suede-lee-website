@@ -1030,6 +1030,19 @@
 
 
 
+  /* phones: arrows sit in a bar under the picture instead of over it; close button gets its own strip */
+  @media (max-width: 640px){
+    #work-modal-img-wrap, #posters-modal-img-wrap{ padding: 38px 10px 56px; }
+    #work-modal-img-wrap .pv-nav, #posters-modal-img-wrap .pv-nav{
+      top: auto; bottom: 9px; transform: none; width: 64px; height: 38px; font-size: 24px; background: rgba(10,10,11,0.85);
+    }
+    #work-modal-img-wrap .pv-prev, #posters-modal-img-wrap .pv-prev{ left: 12px; }
+    #work-modal-img-wrap .pv-next, #posters-modal-img-wrap .pv-next{ right: 12px; }
+    #work-hint, #posters-hint, #comics-hint{ bottom: calc(28px + env(safe-area-inset-bottom, 0px)); white-space: nowrap; }
+    #work-modal-img-wrap, #posters-modal-img-wrap{ flex: 0 0 auto; }
+    #work-modal-img-wrap img, #posters-modal-img-wrap img{ max-height: max(220px, calc(100svh - 380px)); }
+  }
+
   /* panel preview: swipe feedback + floating hint */
   #work-modal-backdrop{ touch-action: pan-y; }
   #work-modal-img{ will-change: transform, opacity; }
@@ -1496,7 +1509,7 @@ window.__init_work = function(){
   function showHint(){
     const h = document.getElementById('work-hint'); if (!h) return;
     h.classList.add('show'); clearTimeout(hintTimer);
-    hintTimer = setTimeout(() => h.classList.remove('show'), 3800);
+    hintTimer = setTimeout(() => h.classList.remove('show'), (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 6000 : 3800);
   }
   function closeModal(){
     backdrop.classList.remove('open');
@@ -2239,9 +2252,11 @@ window.__navHints = {};
 window.__showHint = function(id){
   const h = document.getElementById(id); if (!h) return;
   h.classList.add('show'); clearTimeout(window.__navHints[id]);
-  window.__navHints[id] = setTimeout(() => h.classList.remove('show'), 3800);
+  window.__navHints[id] = setTimeout(() => h.classList.remove('show'), (window.matchMedia && matchMedia('(pointer: coarse)').matches) ? 6000 : 3800);
 };
 window.__hideHint = function(id){ const h = document.getElementById(id); if (h) h.classList.remove('show'); };
+// touch screens have no arrow keys: say so, and leave the hint up a little longer
+if (window.matchMedia && matchMedia('(pointer: coarse)').matches) ['work-hint','posters-hint','comics-hint'].forEach(id => { const h = document.getElementById(id); if (h) h.textContent = 'swipe left or right to navigate'; });
 </script>
 <script>
 (function(){
