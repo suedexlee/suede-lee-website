@@ -1276,6 +1276,22 @@
     #np-volume{ display:none; }
   }
 </style>
+<script>
+/* analytics: GoatCounter (cookie-free). Set GC_CODE to your GoatCounter site code, e.g. 'suedexlee' for suedexlee.goatcounter.com */
+window.GC_CODE = 'suedexlee';
+(function(){
+  var ok = window.GC_CODE && window.GC_CODE !== 'YOURCODE' && /^https?:$/.test(location.protocol) && !/^(localhost|127\.)/.test(location.hostname);
+  if (!ok) return;
+  window.goatcounter = { no_onload: true };
+  var s = document.createElement('script');
+  s.async = true; s.dataset.goatcounter = 'https://' + window.GC_CODE + '.goatcounter.com/count';
+  s.src = 'https://gc.zgo.at/count.js';
+  document.head.appendChild(s);
+})();
+window.__track = function(path, title){
+  try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: '/' + path.replace(/^\//,''), title: title }); } catch(e){}
+};
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><filter id="wm-alpha" color-interpolation-filters="sRGB"><feColorMatrix type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.4 0.4 0.4 0 -0.06"/></filter></svg>
@@ -2279,6 +2295,7 @@ if (window.matchMedia && matchMedia('(pointer: coarse)').matches) ['work-hint','
     } else if (route === 'work' && typeof window.__workRelayout === 'function'){
       window.__workRelayout();
     }
+    setTimeout(function(){ window.__track(FILES[route], route); }, 0);
     document.title = route === 'work' ? 'Suede Lee' : ('Suede Lee — ' + route.charAt(0).toUpperCase() + route.slice(1));
     if (push !== false){
       try { history.pushState({route}, '', FILES[route]); } catch(err) { /* file:// origin can refuse cross-file history entries; the SPA still works, it just won't update the address bar */ }
